@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Traffic Light</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f0f0f0;
+    }
+
+    .traffic-light {
+      width: 100px;
+      background: #333;
+      padding: 20px;
+      border-radius: 20px;
+    }
+
+    .light {
+      width: 60px;
+      height: 60px;
+      background: #111;
+      margin: 15px auto;
+      border-radius: 50%;
+      transition: background 0.5s;
+    }
+
+    .red.on {
+      background: red;
+    }
+
+    .yellow.on {
+      background: yellow;
+    }
+
+    .green.on {
+      background: green;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="traffic-light">
+    <div class="light red" id="red"></div>
+    <div class="light yellow" id="yellow"></div>
+    <div class="light green" id="green"></div>
+  </div>
+
+  <script>
+    const red = document.getElementById("red");
+    const yellow = document.getElementById("yellow");
+    const green = document.getElementById("green");
+
+    let current = 0;
+
+    function updateLights() {
+      red.classList.remove("on");
+      yellow.classList.remove("on");
+      green.classList.remove("on");
+
+      if (current === 0) {
+        red.classList.add("on");
+      } else if (current === 1) {
+        yellow.classList.add("on");
+      } else {
+        green.classList.add("on");
+      }
+
+      current = (current + 1) % 3;
+    }
+
+    updateLights(); 
+    setInterval(updateLights, 2000); 
+  </script>
+
+</body>
+</html>
